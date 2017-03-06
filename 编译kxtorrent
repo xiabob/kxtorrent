@@ -1,0 +1,5 @@
+1、下载已编译好的FFmpeg
+https://github.com/applexiaohao/LOFFmpegSample
+注意添加依赖库：libz.lib，libbz2.lib，libiconv.lib；以及修改Build Setting的Header Search Paths、Library Search Paths
+
+2、SwarmLoader依赖于kxtorrent、kxmovie，需要先生成对应的静态库，简单地说就是运行对应的scheme，注意同样和上面一样添加依赖库和设置Header Search Paths、Library Search Paths

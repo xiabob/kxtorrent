@@ -130,7 +130,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     [self close];
     
     if (_dispatchQueue) {
-        dispatch_release(_dispatchQueue);
+        //dispatch_release(_dispatchQueue);
         _dispatchQueue = nil;
     }
 }
@@ -360,7 +360,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     if (_timer) {
         
         dispatch_source_cancel(_timer);
-        dispatch_release(_timer);
+        //dispatch_release(_timer);
         _timer = nil;
     }
     
