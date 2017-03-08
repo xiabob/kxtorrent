@@ -56,8 +56,8 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
         _tabBarController.viewControllers = @[
         [[UINavigationController alloc] initWithRootViewController:_torrentsViewController],
         [[UINavigationController alloc] initWithRootViewController:_fileBrowserViewController],
-        //[[UINavigationController alloc] initWithRootViewController:_webBrowserViewController],
-        _webBrowserViewController,
+        [[UINavigationController alloc] initWithRootViewController:_webBrowserViewController],
+//        _webBrowserViewController,
         [[UINavigationController alloc] initWithRootViewController:_aboutViewController],
         
         ];

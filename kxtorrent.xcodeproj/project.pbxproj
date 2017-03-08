@@ -28,6 +28,7 @@
 		74929E251E6D6492005321A5 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 74929E211E6D639D005321A5 /* libiconv.2.dylib */; };
 		74929E261E6D64CF005321A5 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 74929E211E6D639D005321A5 /* libiconv.2.dylib */; };
 		74929E271E6D64E3005321A5 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 74929E1D1E6D632E005321A5 /* libbz2.1.0.dylib */; };
+		74929E2B1E6D7789005321A5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74929E2A1E6D7789005321A5 /* Launch Screen.storyboard */; };
 		870064991664AEEE006D4F3E /* checkmark_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 870064921664AEEE006D4F3E /* checkmark_small.png */; };
 		8700649A1664AEEE006D4F3E /* checkmark_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 870064931664AEEE006D4F3E /* checkmark_small@2x.png */; };
 		870064AA1664E684006D4F3E /* TorrentSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 870064A91664E683006D4F3E /* TorrentSettings.m */; };
@@ -363,6 +364,7 @@
 		74929E1D1E6D632E005321A5 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = ../../../../../../../../usr/lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
 		74929E1F1E6D6369005321A5 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 		74929E211E6D639D005321A5 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = ../../../../../../../../usr/lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		74929E2A1E6D7789005321A5 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		870064921664AEEE006D4F3E /* checkmark_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark_small.png; path = resources/images/checkmark_small.png; sourceTree = SOURCE_ROOT; };
 		870064931664AEEE006D4F3E /* checkmark_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "checkmark_small@2x.png"; path = "resources/images/checkmark_small@2x.png"; sourceTree = SOURCE_ROOT; };
 		870064A81664E683006D4F3E /* TorrentSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentSettings.h; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 				875C0A7B164B7388005543CC /* TorrentCell.xib */,
 				87A24CC11657B164004DE427 /* TorrentPeerCell.xib */,
 				87EAD7E816438AD0006048F8 /* Supporting Files */,
+				74929E2A1E6D7789005321A5 /* Launch Screen.storyboard */,
 			);
 			path = SwarmLoader;
 			sourceTree = "<group>";
@@ -1362,6 +1365,7 @@
 				87EAD7F816438AD0006048F8 /* Default-568h@2x.png in Resources */,
 				87EC7229166F20D900CB7F10 /* firstrun in Resources */,
 				87EC52D51677157F00864C04 /* SVProgressHUD.bundle in Resources */,
+				74929E2B1E6D7789005321A5 /* Launch Screen.storyboard in Resources */,
 				87EC52EC1677191C00864C04 /* kxmovie.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1739,7 +1743,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/submodules/kxmovie/FFmpeg-iOS/include";
 				INFOPLIST_FILE = "SwarmLoader/SwarmLoader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules/kxmovie/FFmpeg-iOS/lib",
 					"$(inherited)",
@@ -1776,7 +1780,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/submodules/kxmovie/FFmpeg-iOS/include";
 				INFOPLIST_FILE = "SwarmLoader/SwarmLoader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules/kxmovie/FFmpeg-iOS/lib",
 					"$(inherited)",
@@ -1959,7 +1963,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/submodules/kxmovie/FFmpeg-iOS/include";
 				INFOPLIST_FILE = "SwarmLoader/SwarmLoader-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/submodules/kxmovie/FFmpeg-iOS/lib",
 					"$(inherited)",

@@ -356,9 +356,14 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     return self;
 }
 
-- (void) loadView
+- (void)viewDidLoad
 {
-    _webView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    [super viewDidLoad];
+    [self configViews];
+}
+
+- (void)configViews {
+    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
     self.view = _webView;
     
     _webView.scalesPageToFit = YES;
@@ -373,7 +378,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     CGRect frame = CGRectMake(0,
                               -height,
                               scrollView.bounds.size.width,
-							  height);
+                              height);
     
     //_addressBar = [[UIView alloc] initWithFrame:frame];
     
@@ -392,15 +397,10 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     
     [scrollView addSubview:_addressBar];
     
-	UIEdgeInsets inset = scrollView.contentInset;
-	inset.top += height;
-	scrollView.contentInset = inset;    
+    UIEdgeInsets inset = scrollView.contentInset;
+    inset.top += height;
+    scrollView.contentInset = inset;
     scrollView.delegate = self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
@@ -556,7 +556,7 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     } else {
 
         [SVProgressHUD showSuccessWithStatus: @"Complete download"];
-        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        id appDelegate = [[UIApplication sharedApplication] delegate];
         [appDelegate openTorrentWithData:data];
     }
 }
@@ -567,6 +567,26 @@ static int ddLogLevel = LOG_LEVEL_VERBOSE;
     [_addressBar didFinishLoading:_webView.request title: title];
     _addressBar.backButton.enabled = _webView.canGoBack;
 }
+
+- (NSString *)magnetToBTUrl:(NSString *)magnet type:(NSInteger)type {
+    //magnet:?xt=urn:btih:<info-hash>&dn=<name>&tr=<tracker-url> dn和tr都是可选的
+    //magnet:?xt=urn:btih:6732304ffe59e747cd838415be1b6a0bfb05aada
+    NSString *hashInfo = [magnet stringByReplacingOccurrencesOfString:@"magnet:?xt=urn:btih:" withString:@""];
+    if ([hashInfo rangeOfString:@"&"].location != NSNotFound) {
+        hashInfo = [hashInfo componentsSeparatedByString:@"&"].firstObject;
+    }
+    
+    if (type == 0) {
+        return [NSString stringWithFormat:@"http://itorrents.org/torrent/%@.torrent", hashInfo];
+    } else if (type == 1) {
+        return [NSString stringWithFormat:@"http://itorrents.org/torrent/%@.torrent", hashInfo];
+    } else {
+        return [NSString stringWithFormat:@"http://zoink.it/torrent/%@.torrent", hashInfo];
+    }
+    
+}
+
+
 
 #pragma mark - UISearchBar delegate
 
@@ -686,7 +706,16 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 
             [self downloadStart: @"GET" url: request.URL];
             return NO;
-        }        
+        } else if ([request.URL.absoluteString hasPrefix:@"magnet"]) {
+            NSLog(@"url: %@", request.URL);
+            //这里需要将磁力链接转成对应的种子文件
+            NSString *torrent = [self magnetToBTUrl:request.URL.absoluteString type:0];
+            NSLog(@"torrent: %@", torrent);
+            [self downloadStart:@"GET" url:[NSURL URLWithString:torrent]];
+            return NO;
+        } else {
+            NSLog(@"other url:%@", request.URL);
+        }
     }
     
     if (navigationType == UIWebViewNavigationTypeFormSubmitted) {
